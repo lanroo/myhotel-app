@@ -13,10 +13,10 @@ const Home: NextPage = () => {
   const [showModal, setShowModal] = useState(false);
   let [selectedItems, setSelectedItems] = useState<[]>();
   let [showRecentOffer, setShowRecentOffers] = useState(false);
-  let items = [];
+  let [modalBody, setModalBody] = useState(1);
+  let items = [{}];
   
   function selectItem(item: any, index: number) {
-    
     setSelectedItems([]);
     items.push(item);
     
@@ -24,17 +24,27 @@ const Home: NextPage = () => {
   
   return (
     <div className='h-screen w-screen h- items-center flex flex-col px-96 py-8 bg-[#F6F9FF]'>
-      <Navbar onClick={() => setShowModal(true)}/>
+      <Navbar onClick={() => {
+         setShowModal(true)
+         setModalBody(1)
+      }}/>
       <div className="flex flex-row items-center justify-between w-full mb-4 mt-10">
         <h3 className='text-xl text-black font-bold'>Waiting for your offer</h3>
         <p className='text-[#ED5959]'>View all {offers.length}</p>
       </div>
       <div className='flex flex-col h-1/2 w-full px-1 overflow-y-hidden'>
           {offers.map((e, index) => {
-              const generator = new AvatarGenerator();
+             // Responsible for generating random avatars for each list item (updates with each interaction)
+             
+             const generator = new AvatarGenerator();
               let avatar = generator.generateRandomAvatar();
-                  return (
-                    <ItemList selected={true} onClick={() => selectItem(e, index)} key={index} avatar={avatar} name={e.name} 
+             
+              return (
+                    <ItemList selected={true} onClick={() => {
+                      selectItem(e, index)
+                      setShowModal(true)
+                      setModalBody(2)
+                    }} key={index} avatar={avatar} name={e.name} 
                     profession={e.profession} created={e.created} punctuation={e.punctuation}/>    
                   );
                 })}
@@ -42,7 +52,7 @@ const Home: NextPage = () => {
       
       {
         showModal ? (
-          <Sidebar onClose={() => setShowModal(false)}/>
+          <Sidebar profile={items.indexOf(items.length)} body={modalBody} onClose={() => setShowModal(false)}/>
         ) : null
       }
 
@@ -76,7 +86,10 @@ const Home: NextPage = () => {
         :
           <div className='flex flex-row justify-between items-center mt-16'>
             <p className='text-black w-2/3 text-md'>Why wait? Start creating a new ofter and share among your guests</p>
-            <Button label={'New Offer'} onClick={() => setShowModal(true)}/>
+            <Button label={'New Offer'} onClick={() => {
+         setShowModal(true)
+         setModalBody(1)
+      }}/>
         </div>
       }
      

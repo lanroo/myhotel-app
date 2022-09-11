@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { MdNotificationsNone, MdOutlineSettings } from 'react-icons/md';
 import { Button } from './button';
 // import logo from 'logo.svg';
+
 interface INavbarProps {
     onClick: () => void;
 }

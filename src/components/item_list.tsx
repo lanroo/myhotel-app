@@ -14,10 +14,7 @@ interface IItemListProps {
     selected: boolean
 }
 export function ItemList({name, profession, created, punctuation, avatar, onClick, selected} : IItemListProps) {
-    // let name = 'Alex Smith';
-    // const generator = new AvatarGenerator();
-    // let avatar = generator.generateRandomAvatar('avatar');
-    
+   
     return (
         <div onClick={onClick} className={`${selected ?? 'bg-slate-300 border-slate-900 border border-solid'} my-2 p-4 rounded-lg flex flex-row justify-between w-full h-content bg-white shadow-lg`}>
 

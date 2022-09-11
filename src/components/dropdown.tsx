@@ -1,4 +1,6 @@
+import { Menu } from "@headlessui/react";
 import { useState } from "react";
+import { MdArrowDropDown } from "react-icons/md";
 
 interface IDropdownProps {
     label : string,
@@ -8,20 +10,38 @@ interface IDropdownProps {
 
 export function Dropdown({label, items, placeholder} : IDropdownProps) {
     const [dropdownOpen, setDropdownOpen] = useState(false);
+    const [selected, setSelected] = useState(items[0]);
+    // 
     return (
-        <div onClick={() => setDropdownOpen(!dropdownOpen)} className={`my-2 w-full border border-solid rounded-sm border-[#EBEBEB] bg-[#FDFDFD] px-2 py-1 flex flex-col`}>
-            <small className="text-[#505050] ">{label}</small>
-           <div className={`${dropdownOpen ? `top-full opacity-100 visible` : `top-[110%] invisible opacity-0`} absolute left-0 z-40 mt-2 w-full rounded border-[.5px] border-light bg-white py-5 shadow-card transition-all`}>
-            {
-                items.map((e, index) => {
-                    return(
-                        <a href="javascript:void(0)" className="block py-2 px-5 text-base font-semibold text-body-color hover:bg-slate-200 hover:bg-opacity-5 hover:text-slate-900">
-                            {e}
-                        </a>
-                    );
-                })
-            }
-           </div>
-        </div>
+        <Menu>
+            <div onClick={() => setDropdownOpen(!dropdownOpen)} className={`my-2 w-full border border-solid rounded-sm border-[#EBEBEB] bg-[#FDFDFD] px-2 py-1 flex flex-col`}>
+              <div className="flex flex-row justify-between">
+              <small className="text-[#505050] ">{label}</small>
+                
+                <Menu.Button className={'flex flex-row justify-between items-center'}>
+                   
+                    <MdArrowDropDown className="w-6 h-6"/>
+                </Menu.Button>
+              </div>
+                
+                <Menu.Items className={'flex flex-col relative'}>
+                    {
+                    items.map((e, index) => {
+                        return <Menu.Item key={index}>
+                            {({active}) => (
+                                <a onClick={() => setSelected(e)} href="javascript:void(0)" className={`${active ? 'bg-[#ED5959] bg-opacity-30' : 'bg-white text-black'}`}>
+                                    {e}
+                                </a>
+                            )}
+                        </Menu.Item>
+                    })   
+                    }
+                    
+                </Menu.Items>
+
+                <p>{selected}</p>
+    
+            </div>
+        </Menu>
     );
 }
