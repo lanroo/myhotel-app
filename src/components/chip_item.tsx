@@ -7,9 +7,9 @@ interface IChipItemProps {
 export function ChipItem({label} : IChipItemProps) {
     const [selected, setSelected] = useState(false);
 
-    //color selected on/off 
+    //color selected on/off booking finder
     return( 
-        <div onClick={() => setSelected(!selected)} className={`${selected ? 'bg-[#ED5959] bg-opacity-30 text-[#ED5959]' : 'bg-white'} cursor-pointer m-2 w-content p-2 border border-solid border-[#505050]-[.3] rounded-xl bg-slate-200-[.6] ease-in transition-all`}>
+        <div onClick={() => setSelected(!selected)} className={`${selected ? 'bg-[#ED5959] bg-opacity-30 text-[#ED5959]' : 'bg-white'} cursor-pointer m-2 sm:text-sm md:text-sm lg:w-content p-2 border border-solid border-[#505050]-[.3] rounded-xl bg-slate-200-[.6] ease-in transition-all`}>
                       <p>{label}</p>
                     </div> 
     );

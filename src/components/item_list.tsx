@@ -16,7 +16,7 @@ interface IItemListProps {
 export function ItemList({name, profession, created, punctuation, avatar, onClick, selected} : IItemListProps) {
    
     return (
-        <div onClick={onClick} className={`${selected ?? 'bg-slate-300 border-slate-900 border border-solid'} my-2 p-4 rounded-lg flex flex-row justify-between w-full h-content bg-white shadow-lg`}>
+        <div onClick={onClick} className={`${selected ?? 'bg-slate-300 border-slate-900 border border-solid'} my-2 p-4 rounded-lg flex sm:flex-col md:flex-col lg:flex-row justify-between w-full h-content bg-white shadow-lg`}>
 
         <div className="flex flex-row">
             {/*<Avatar name={name} size="48" className="rounded-md"/>*/}

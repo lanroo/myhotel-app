@@ -41,7 +41,7 @@ export function OfferBody({onClose} : IBodyProps) {
         
           <Dropdown label={"Room Type"} placeholder={""} items={room_types}/>
           <small>Facilities</small>
-          <div className="grid grid-cols-6">
+          <div className="grid lg:grid-cols-6 sm:grid-cols-2 md:grid-cols-3">
             { 
                 facilities.map((e, index) => {
                   return (

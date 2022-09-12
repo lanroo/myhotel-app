@@ -23,16 +23,16 @@ const Home: NextPage = () => {
   }
   
   return (
-    <div className='h-screen w-screen h- items-center flex flex-col px-96 py-8 bg-[#F6F9FF]'>
+    <div className='h-screen w-screen items-center flex flex-col sm:px-6 md:px-6 lg:px-96 py-8 bg-[#F6F9FF]'>
       <Navbar onClick={() => {
          setShowModal(true)
          setModalBody(1)
       }}/>
-      <div className="flex flex-row items-center justify-between w-full mb-4 mt-10">
+      <div className="flex lg:flex-row sm:flex-col sm:mx-2 md:mx-2 md:flex-col items-center justify-between w-full mb-4 mt-10">
         <h3 className='text-xl text-black font-bold'>Waiting for your offer</h3>
         <p className='text-[#ED5959]'>View all {offers.length}</p>
       </div>
-      <div className='flex flex-col h-1/2 w-full px-1 overflow-y-hidden'>
+      <div className='flex flex-col sm:h-2/5 lg:h-1/2 w-full px-1 sm:overflow-y-scroll md:overflow-y-scroll lg:overflow-y-hidden'>
           {offers.map((e, index) => {
              // Responsible for generating random avatars for each list item (updates with each interaction)
              
@@ -60,7 +60,7 @@ const Home: NextPage = () => {
         // Recent Offer
         showRecentOffer ?
         <div className=" flex flex-col w-full"> 
-            <div className="flex flex-row items-center justify-between w-full mb-4 mt-10">
+            <div className="flex sm:flex-col md:flex-col lg:flex-row items-center justify-between w-full mb-4 mt-10">
                 <h3 className='text-xl text-black font-bold'>Recent Offers</h3>
                 <p className='text-[#ED5959]'>View all</p>
             </div>
@@ -84,8 +84,8 @@ const Home: NextPage = () => {
             </div>
         </div> 
         :
-          <div className='flex flex-row justify-between items-center mt-16'>
-            <p className='text-black w-2/3 text-md'>Why wait? Start creating a new ofter and share among your guests</p>
+          <div className='flex sm:flex-col md:flex-col lg:flex-row justify-between items-center mt-16'>
+            <p className='text-black sm:w-auto md:w-auto lg:w-2/3 text-md'>Why wait? Start creating a new ofter and share among your guests</p>
             <Button label={'New Offer'} onClick={() => {
          setShowModal(true)
          setModalBody(1)
