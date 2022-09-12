@@ -30,7 +30,7 @@ const Home: NextPage = () => {
       }}/>
       <div className="flex lg:flex-row sm:flex-col sm:mx-2 md:mx-2 md:flex-col items-center justify-between w-full mb-4 mt-10">
         <h3 className='text-xl text-black font-bold'>Waiting for your offer</h3>
-        <p className='text-[#ED5959]'>View all {offers.length}</p>
+        <p className='cursor-pointer text-[#ED5959]'>View all {offers.length}</p>
       </div>
       <div className='flex flex-col sm:h-2/5 lg:h-1/2 w-full px-1 sm:overflow-y-scroll md:overflow-y-scroll lg:overflow-y-hidden'>
           {offers.map((e, index) => {
