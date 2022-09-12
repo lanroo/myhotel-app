@@ -1,4 +1,4 @@
-/*import { TodoProps } from ""
+
 import { Button } from '../components/button';
 
 type Todo = {
@@ -18,4 +18,4 @@ export const Row = ({todo: { task, isCompleted }}: TodoProps) => (
         <Button label={'New Offer'} onClick={() => {}}/>
         </div>
     </div>
-)*/
+)
